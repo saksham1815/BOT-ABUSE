@@ -8,6 +8,12 @@ from core.config import (
 
 def ask_llm(prompt, mode="normal"):
 
+    if not OLLAMA_URL:
+        return """
+LLM Error:
+OLLAMA_URL is not configured.
+"""
+
     if mode == "rules":
 
         temperature = 0.05
@@ -23,7 +29,6 @@ def ask_llm(prompt, mode="normal"):
         temperature = 0.1
         predict = 700
 
-
     payload = {
 
         "model": OLLAMA_MODEL,
@@ -31,7 +36,6 @@ def ask_llm(prompt, mode="normal"):
         "prompt": prompt,
 
         "stream": False,
-
 
         "options": {
 
@@ -56,7 +60,6 @@ def ask_llm(prompt, mode="normal"):
         }
     }
 
-
     try:
 
         response = requests.post(
@@ -65,29 +68,32 @@ def ask_llm(prompt, mode="normal"):
             timeout=600
         )
 
-
-        if response.status_code != 200:
-            return (
-                f"LLM HTTP Error: "
-                f"{response.status_code}"
-            )
-
+        response.raise_for_status()
 
         data = response.json()
-
 
         output = data.get(
             "response",
             ""
         )
 
-
         return output.strip()
 
+    except requests.exceptions.ConnectionError:
 
+        return f"""
+Cannot connect to Ollama.
+
+Configured URL:
+{OLLAMA_URL}
+
+Possible causes:
+- Ollama is not running
+- URL is incorrect
+- Streamlit Cloud cannot access local Ollama
+"""
 
     except requests.exceptions.Timeout:
-
 
         return """
 LLM timeout.
@@ -97,7 +103,6 @@ Try:
 - increase Ollama resources
 - use larger context model
 """
-
 
     except Exception as e:
 
