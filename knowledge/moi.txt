@@ -1,0 +1,137 @@
+# MOI (ModSecurity/Open ModSecurity Interface) Rules Engine Properties Documentation
+
+## Introduction
+
+### What is MOI?
+
+MOI (ModSecurity/Open ModSecurity Interface) is a lightweight, functional rule language designed for matching patterns against structured data. It is used extensively in Imperva Advanced Bot Protection (ABP) to create custom detection and mitigation rules for bot traffic and automated threats.
+
+MOI is:
+
+* Minimalistic
+* Strongly typed
+* Statically typed
+* Purely functional
+* Non-Turing complete
+* Immutable
+
+The language is inspired by Lisp, with additional syntactic sugar that improves readability and usability.
+
+**Pronunciation:** “MOI” rhymes with “toy”.
+
+---
+
+# Imperva Advanced Bot Protection (ABP) and MOI
+
+## Purpose of MOI in ABP
+
+In Imperva Advanced Bot Protection (ABP), MOI is used to define custom security policies capable of detecting and mitigating automated threats against web applications.
+
+These threats include:
+
+* Web scrapers
+* Credential stuffing bots
+* Account takeover attacks
+* Automated abuse traffic
+* Malicious crawlers
+
+MOI rules evaluate traffic patterns and behavioral indicators, then trigger actions such as:
+
+* Blocking traffic
+* Redirecting requests
+* Presenting CAPTCHA challenges
+* Tagging suspicious sessions
+
+---
+
+# Core Language Characteristics
+
+## Design Principles
+
+### Minimalistic
+
+MOI focuses strictly on expression evaluation and pattern matching.
+
+### Strongly Typed
+
+Operations between incompatible types are invalid.
+
+Example:
+
+* Comparing a string to an IP address results in a compile-time error.
+
+### Statically Typed
+
+All type checking occurs during compilation rather than runtime.
+
+### Functional
+
+MOI has:
+
+* No mutable state
+* No loops
+* No variable reassignment
+
+### Non-Turing Complete
+
+MOI intentionally avoids complexity and infinite execution possibilities.
+
+---
+
+# Basic Syntax Examples
+
+```lisp
+(time_with_no_token > 30s)
+
+(requests_per_minute <= 5.0)
+
+(all headers.user_agent?
+     ((length headers.user_agent) < 10))
+
+(in visitor_ip 127.0.0.0/8 abcd:1234::/16 10.20.30.40)
+
+(matches headers.user_agent re"Mozilla")
+
+(matches headers.user_agent re"^curl" "WebScraper")
+
+tags.bad_bot
+
+headers.custom_header?
+
+(any tags.bad_bot
+     tags.suspicious
+     tags.evil
+     (matches headers.user_agent "curl"))
+
+array[0]
+
+array[-1]
+
+(length array)
+
+first_install_time < 2010-01-01T00:00:00Z
+```
+
+---
+
+# Summary
+
+MOI is a safe, expressive, and security-focused rule language optimized for bot detection and traffic inspection.
+
+Its key strengths are:
+
+* Strong typing
+* Functional design
+* Predictable evaluation
+* Safe nil handling
+* Powerful regex support
+* Structured table operations
+* Security-oriented fail-open behavior
+
+It is particularly effective for:
+
+* Web application security
+* Bot mitigation
+* Traffic analysis
+* Behavioral rule engines
+* Request inspection systems

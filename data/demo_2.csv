@@ -1,0 +1,39 @@
+timestamp,ip,path,status,user_agent,requests,geo_location
+2026-04-30 08:00:01,185.23.44.10,/login,200,python-requests/2.31,18500,Netherlands
+2026-04-30 08:00:14,185.23.44.10,/login,200,python-requests/2.31,19200,Netherlands
+2026-04-30 08:01:03,91.77.201.4,/signin,200,curl/8.1,12400,Russia
+2026-04-30 08:01:20,103.44.88.21,/search,200,HeadlessChrome,8600,India
+2026-04-30 08:01:42,103.44.88.21,/catalog,200,HeadlessChrome,9200,India
+2026-04-30 08:02:11,45.166.22.14,/pricing,200,Scrapy/2.9,11400,Brazil
+2026-04-30 08:02:34,45.166.22.14,/pricing,200,Scrapy/2.9,9800,Brazil
+2026-04-30 08:03:01,34.91.12.8,/search,200,Chrome/124,420,United States
+2026-04-30 08:03:19,34.91.12.8,/product/123,200,Chrome/124,210,United States
+2026-04-30 08:03:48,210.17.55.9,/checkout,200,selenium-bot,7800,Singapore
+2026-04-30 08:04:12,210.17.55.9,/buy,200,selenium-bot,8100,Singapore
+2026-04-30 08:04:50,77.55.12.77,/events,200,Playwright,7200,Germany
+2026-04-30 08:05:21,77.55.12.77,/checkout,200,Playwright,7600,Germany
+2026-04-30 08:05:44,66.19.200.18,/api/products,200,Go-http-client/1.1,13200,United Kingdom
+2026-04-30 08:06:03,66.19.200.18,/api/products,200,Go-http-client/1.1,12800,United Kingdom
+2026-04-30 08:06:24,150.44.91.31,/login,401,python-requests/2.31,17600,Japan
+2026-04-30 08:06:49,150.44.91.31,/login,401,python-requests/2.31,18300,Japan
+2026-04-30 08:07:14,121.90.88.6,/search,200,HeadlessChrome,9900,China
+2026-04-30 08:07:38,121.90.88.6,/catalog,200,HeadlessChrome,10100,China
+2026-04-30 08:08:05,88.11.74.2,/pricing,200,Scrapy/2.9,11900,Spain
+2026-04-30 08:08:26,88.11.74.2,/pricing,200,Scrapy/2.9,12100,Spain
+2026-04-30 08:08:55,59.77.31.19,/login,200,curl/8.1,14100,South Korea
+2026-04-30 08:09:13,59.77.31.19,/login,200,curl/8.1,14600,South Korea
+2026-04-30 08:09:41,172.18.10.4,/search,200,Chrome/124,310,Canada
+2026-04-30 08:10:02,172.18.10.4,/product/999,200,Chrome/124,190,Canada
+2026-04-30 08:10:33,94.66.41.8,/checkout,200,selenium-bot,8400,France
+2026-04-30 08:10:59,94.66.41.8,/buy,200,selenium-bot,8600,France
+2026-04-30 08:11:27,203.11.41.91,/events,200,Playwright,7900,Australia
+2026-04-30 08:11:48,203.11.41.91,/checkout,200,Playwright,8100,Australia
+2026-04-30 08:12:16,185.23.44.10,/login,200,python-requests/2.31,20100,Netherlands
+2026-04-30 08:12:42,45.166.22.14,/pricing,200,Scrapy/2.9,12500,Brazil
+2026-04-30 08:13:08,121.90.88.6,/catalog,200,HeadlessChrome,11000,China
+2026-04-30 08:13:31,66.19.200.18,/api/products,200,Go-http-client/1.1,13600,United Kingdom
+2026-04-30 08:14:02,77.55.12.77,/checkout,200,Playwright,8200,Germany
+2026-04-30 08:14:29,150.44.91.31,/login,401,python-requests/2.31,19100,Japan
+2026-04-30 08:14:55,59.77.31.19,/login,200,curl/8.1,15100,South Korea
+2026-04-30 08:15:21,94.66.41.8,/buy,200,selenium-bot,8900,France
+2026-04-30 08:15:46,203.11.41.91,/events,200,Playwright,8300,Australia

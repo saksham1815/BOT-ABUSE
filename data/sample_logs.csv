@@ -1,0 +1,5 @@
+timestamp,endpoint,requests,risk_score,status
+2026-04-30T09:00:00,/login,140230,92,critical
+2026-04-30T09:05:00,/search,82440,44,medium
+2026-04-30T09:10:00,/checkout,50221,71,high
+2026-04-30T09:15:00,/api/cart,18344,31,low 

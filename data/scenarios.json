@@ -1,0 +1,5 @@
+[
+  {"name":"Holiday Ticket Drop","attack_multiplier":3.4},
+  {"name":"Credential Leak Event","attack_multiplier":4.8},
+  {"name":"Competitor Scrape Wave","attack_multiplier":2.6}
+]

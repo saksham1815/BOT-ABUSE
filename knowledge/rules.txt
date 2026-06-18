@@ -1,0 +1,458 @@
+MOI Rules Engine Properties Documentation
+
+Contents
+
+1. Rule Engine Properties
+   1.1 Misc
+   1.2 Flags
+   1.3 Interrogation Properties
+       1.3.1 Android Interrogation Properties
+       1.3.2 iOS Interrogation Properties
+       1.3.3 Web Browser Interrogation Properties
+       1.3.4 Captcha Properties
+
+============================================================
+RULE ENGINE PROPERTIES
+============================================================
+
+Types with a ? suffix (e.g. bool?) can be missing (nil).
+You may want to check the values with name? before reading them.
+Reading a property which is nil invalidates the whole rule,
+meaning it will not trigger.
+
+============================================================
+1.1 MISC
+============================================================
+
+access_time : datetime
+Description:
+    The time when the request was received
+Example:
+    2020-01-15T21:24:16.789Z
+
+ai_category : string?
+Description:
+    AI tool category if the request comes from AI tool.
+    Can only be set for CWAF domains.
+
+ai_tool : string?
+Description:
+    Name of the AI tool if the request comes from such.
+    Can only be set for CWAF domains.
+
+apollo : set<ident>
+Description:
+    Flags set by Apollo (machine learning)
+
+apollo.generating_uas_mismatch : bool
+apollo.ip_id_ratio : bool
+apollo.no_gen_requests : bool
+
+client_platform : string?
+Description:
+    The platform the visitor is using.
+Example:
+    "web_browser"
+
+cloudwaf_website_id : number?
+Description:
+    Current domain CloudWAF website ID
+
+cookie_list : array<struct>
+Description:
+    List of all cookies, in order, with correct case-sensitive names
+
+cookie_list[0].name : string?
+Example:
+    "name"
+
+cookie_list[0].value : string?
+Example:
+    "value"
+
+cookies : map<ident, string>
+Description:
+    Cookies extracted from Cookie header
+
+cookies.id : string?
+cookies.name : string?
+cookies.user : string?
+
+dns : struct
+Description:
+    Reverse DNS of the client IP
+
+dns.host : string?
+Description:
+    Hostname from reverse DNS lookup
+
+dns.state : string
+Possible values:
+    pending
+    failed
+    forward_mismatched
+    ok
+
+env : struct?
+Description:
+    Environmental parameters from account configuration
+
+fpid : string?
+Description:
+    Hash of selected web browser interrogation fields
+
+geo_asn : number?
+Description:
+    ASN of organization owning the IP
+
+geo_country_code : string?
+Description:
+    Visitor country code
+
+geo_org : string?
+Description:
+    Organization owning the IP
+
+header_id : string
+Description:
+    header_id: visitor_ip:primitive_id
+
+header_list : array<struct>
+Description:
+    List of all headers in correct order and original casing
+
+headers : map<ident, string>
+Description:
+    Request headers as map
+
+headers.accept : string?
+headers.accept_charset : string?
+headers.accept_encoding : string?
+headers.accept_language : string?
+headers.connection : string?
+headers.cookie : string?
+headers.custom_header : string?
+headers.host : string?
+headers.user_agent : string?
+
+hsig : string
+Description:
+    Header signature
+
+interrogator_age : duration?
+Description:
+    Interrogator script age
+
+ip : ip
+Description:
+    Visitor IP address
+
+managed_condition : set<ident>
+Description:
+    Managed Conditions triggered for this request
+
+pid : string
+Description:
+    primitive_id hash
+
+postback_seeds : struct?
+Description:
+    Seeds used for challenge script obfuscation
+
+random_id : string?
+Description:
+    Unique identifier assigned when client first acquires token
+
+rate_limiting_scope : string
+
+request : struct?
+Description:
+    Information about analysis request
+
+request.method : string?
+request.path : string?
+request.query : map<ident, string>?
+request.query_string : string?
+request.version : string?
+
+request_type : string
+Description:
+    Type of request
+Example:
+    "post_analysis"
+
+requests_per_minute : number?
+requests_per_minute_without_token : number?
+requests_per_session : number?
+
+requests_since_any_proof_of_work_succeeded : number?
+requests_since_captcha_succeeded : number?
+requests_since_challenge : number?
+
+requests_with_expired_token : number?
+requests_with_no_token : number?
+
+sdk_version : struct?
+session_length : duration?
+
+tags : set<ident>
+Description:
+    Tags found in existing token
+
+tcp_rtt_ms : number?
+
+time_since_any_proof_of_work_succeeded : duration?
+time_since_captcha_submitted : duration?
+time_since_captcha_succeeded : duration?
+time_since_challenge : duration?
+time_with_expired_token : duration?
+time_with_no_token : duration?
+
+tls_fingerprint : string?
+tls_fingerprint_degreased : string?
+
+tls_rtt_ms : number?
+
+ua : struct
+Description:
+    Parsed User-Agent
+
+ua.browser_type : string?
+ua.category : string?
+ua.name : string?
+ua.os : string?
+ua.os_version : string?
+ua.vendor : string?
+ua.version : string?
+ua.version_major : number?
+
+zid : string?
+zuid : string?
+
+============================================================
+1.2 FLAGS
+============================================================
+
+Flags are all booleans.
+They are always true or false, never missing.
+
+flags
+Description:
+    New flags joined with previous token flags
+
+flags.automation_chrome_driver
+Description:
+    Automation detected through ChromeDriver
+
+flags.jsat_user_agent_header_inconsistent
+Description:
+    User-Agent mismatch detected
+
+flags.no_token
+Description:
+    Visitor lacks token
+
+flags.suspicious_user_agent
+Description:
+    User-Agent is suspicious or malformed
+
+============================================================
+1.3 INTERROGATION PROPERTIES
+============================================================
+
+Interrogation code runs on:
+- Android
+- iOS
+- Web browsers
+
+============================================================
+1.3.1 ANDROID INTERROGATION PROPERTIES
+============================================================
+
+android : struct?
+Description:
+    Android interrogation data
+
+android.application.apk_signature : string?
+android.application.default_locale : string?
+android.application.first_install_time : datetime?
+android.application.installer : string?
+android.application.last_update_time : datetime?
+android.application.loaded_class_count : number?
+android.application.permissions : string?
+
+android.application.signatures : array<string>?
+
+android.application.stack_trace : array<struct>?
+
+android.application.version_code : number?
+android.application.version_name : string?
+
+android.device.height : number?
+android.device.width : number?
+android.device.id : string?
+
+android.device.build_fingerprint.board : string?
+android.device.build_fingerprint.brand : string?
+android.device.build_fingerprint.device : string?
+android.device.build_fingerprint.display : string?
+android.device.build_fingerprint.hardware : string?
+android.device.build_fingerprint.manufacturer : string?
+android.device.build_fingerprint.model : string?
+
+android.device.network_fingerprint : map<ident, struct>?
+
+android.device.packages_fingerprint : string?
+
+============================================================
+1.3.2 IOS INTERROGATION PROPERTIES
+============================================================
+
+ios : struct?
+Description:
+    iOS interrogation data
+
+ios.bundle_identifier : string?
+ios.bundle_version : string?
+ios.country_code : string?
+
+ios.debugger : bool?
+
+ios.device.height : number?
+ios.device.width : number?
+
+ios.ip_addresses : map<ident, string>?
+
+ios.is_jail_broken : bool?
+ios.is_simulator : bool?
+
+ios.language_code : string?
+ios.model : string?
+ios.vendor_id : string?
+ios.version : string?
+
+============================================================
+1.3.3 WEB BROWSER INTERROGATION PROPERTIES
+============================================================
+
+web_browser : struct?
+Description:
+    Web browser interrogation
+
+web_browser.add_behavior : bool?
+
+web_browser.audio : struct?
+web_browser.audio.m4a : string?
+web_browser.audio.mp3 : string?
+web_browser.audio.ogg : string?
+web_browser.audio.wav : string?
+
+web_browser.browser.chrome : struct?
+web_browser.browser.connection_rtt : number?
+web_browser.browser.has_chrome_object : bool?
+web_browser.browser.ie : bool?
+web_browser.browser.webdriver : bool?
+
+web_browser.canvas.blending : bool?
+web_browser.canvas.img : string?
+web_browser.canvas.towebp : bool?
+web_browser.canvas.winding : bool?
+
+web_browser.cpu_class : string?
+web_browser.do_not_track : string?
+
+web_browser.fonts : string?
+web_browser.fonts_array : array<string>?
+
+web_browser.indexed_db : bool?
+
+web_browser.language : string?
+
+web_browser.languages.array : array<string>?
+
+web_browser.location.protocol : string?
+
+web_browser.open_database : bool?
+
+web_browser.platform : string?
+
+web_browser.plugins : string?
+
+web_browser.plugins_meta.item_name : string?
+web_browser.plugins_meta.named_item_name : string?
+web_browser.plugins_meta.refresh_name : string?
+
+web_browser.product : string?
+web_browser.product_sub : string?
+
+web_browser.screen.height : number?
+web_browser.screen.width : number?
+web_browser.screen.avail_height : number?
+web_browser.screen.avail_width : number?
+web_browser.screen.inner_height : number?
+web_browser.screen.inner_width : number?
+web_browser.screen.outer_height : number?
+web_browser.screen.outer_width : number?
+web_browser.screen.pixel_depth : number?
+
+web_browser.scripts.inline_script_count : number?
+web_browser.scripts.src_script_count : number?
+
+web_browser.timezone_h : number?
+web_browser.timezone_min : number?
+
+web_browser.touch.max_touch_points : number?
+web_browser.touch.touch_event : bool?
+web_browser.touch.touch_start : bool?
+
+web_browser.user_agent : string?
+web_browser.vendor : string?
+
+web_browser.video.h264 : string?
+web_browser.video.ogg : string?
+web_browser.video.webm : string?
+
+web_browser.web_gl : struct?
+Description:
+    WebGL interrogation information
+
+web_browser.web_gl.vendor : string?
+web_browser.web_gl.renderer : string?
+web_browser.web_gl.version : string?
+web_browser.web_gl.unmasked_vendor : string?
+web_browser.web_gl.unmasked_renderer : string?
+
+web_browser.window.battery : bool?
+web_browser.window.console_debug_name : string?
+web_browser.window.console_debug_native : bool?
+web_browser.window.hardware_concurrency : number?
+web_browser.window.has_call_phantom : bool?
+web_browser.window.has_underscore_phantom : bool?
+web_browser.window.history_length : number?
+web_browser.window.iframe : bool?
+
+web_browser.window.performance_observer.supported_entry_types : array<string>?
+
+============================================================
+1.3.4 CAPTCHA PROPERTIES
+============================================================
+
+captcha : struct
+
+captcha.provider : string?
+Description:
+    Captcha provider
+Examples:
+    "geetest"
+    "hcaptcha"
+
+captcha.solve_duration : duration?
+Description:
+    Time taken to solve captcha
+
+Example:
+    1.025s
+
+============================================================
+END OF DOCUMENT
+============================================================

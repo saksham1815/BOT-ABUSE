@@ -1,0 +1,6 @@
+{
+  "bot_block_rate": 0.82,
+  "human_friction": 0.03,
+  "ato_success_rate": 0.015,
+  "scraping_revenue_loss": 0.03
+}

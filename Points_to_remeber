@@ -1,0 +1,14 @@
+category based analyses  and like abp and ato 
+moi inclusion
+
+
+
+ollama run gemma3:4b
+
+
+python -m venv venv                    
+venv\Scripts\activate
+
+python -m streamlit run app.py
+
+https://chatgpt.com/share/6a2db62e-8938-83e8-80bf-83f21f40ce7f

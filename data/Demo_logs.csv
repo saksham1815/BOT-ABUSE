@@ -1,0 +1,21 @@
+timestamp,ip,path,status,user_agent,requests,geo_location
+2026-04-30,1.1.1.1,/login,200,python-bot,145000,Netherlands
+2026-04-30,2.2.2.2,/pricing,200,scraper,98000,Russia
+2026-04-30,3.3.3.3,/search,200,bot,62000,Germany
+2026-04-30,4.4.4.4,/checkout,200,chrome,54000,United States
+2026-04-30,5.5.5.5,/events,200,bot,32000,Brazil
+2026-04-30,1.1.1.1,/login,200,python-bot,145000,Netherlands
+2026-04-30,2.2.2.2,/pricing,200,scraper,98000,Russia
+2026-04-30,3.3.3.3,/search,200,bot,62000,Germany
+2026-04-30,4.4.4.4,/checkout,200,chrome,54000,United States
+2026-04-30,1.1.1.1,/login,200,python-bot,145000,Netherlands
+2026-04-30,2.2.2.2,/pricing,200,scraper,98000,Russia
+2026-04-30,3.3.3.3,/search,200,bot,62000,Germany
+2026-04-30,4.4.4.4,/checkout,200,chrome,54000,United States
+2026-04-30,5.5.5.5,/events,200,bot,32000,Brazil
+2026-04-30,5.5.5.5,/events,200,bot,32000,Brazil
+2026-04-30,1.1.1.1,/login,200,python-bot,145000,Netherlands
+2026-04-30,2.2.2.2,/pricing,200,scraper,98000,Russia
+2026-04-30,3.3.3.3,/search,200,bot,62000,Germany
+2026-04-30,4.4.4.4,/checkout,200,chrome,54000,United States
+2026-04-30,5.5.5.5,/events,200,bot,32000,Brazil

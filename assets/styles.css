@@ -1,0 +1,5 @@
+.block-container {padding-top:1rem;padding-bottom:2rem;max-width:1600px;}
+.metric-card {transition:all .2s ease-in-out;}
+.metric-card:hover {transform:translateY(-2px);box-shadow:0 0 18px rgba(34,211,238,.15);} 
+hr {border-color:#1f2937;}
+
